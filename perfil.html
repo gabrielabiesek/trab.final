@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="Imagens/logoIcone.png" type="image/x-icon">
+        <title>GT entertainment</title>
+    </head>
+    <style>
+        button{
+            background-color: white;
+            color: black;
+            border: solid white;
+        }
+        header{
+            margin-left: 10%;
+            border: 1px solid white;
+        }
+        .lado{
+            border: solid white;
+            margin-right: 94%;
+            margin-top: 1%;
+            display: flex;
+        } 
+        .usuario{
+            display: flex;
+            height: 30%;
+        }
+        .posts{
+            display: inline;
+            margin-top: 10%;
+            margin-left: 230%;
+            margin-bottom: 15%;
+        }
+        .botao{
+            border: solid black;
+            width: 300px;
+            height: 10%;
+            display: inline-block;
+            margin-top: 10%;
+            font-size: larger;
+            justify-content: center;
+            margin-left: 10%;
+            background-color: rgb(0, 0, 218);
+            color: white;
+            margin-top: 6%;
+            cursor: pointer;
+        }
+        .botao.clicado {
+            background-color: white; /* Cor ao ser clicado */
+            color: black;
+            border: solid black;
+            width: 300px;
+            height: 10%;
+            font-size: larger;
+        }
+        .parte1{
+            display: flex;
+        }
+        .parte2{
+            display: flex;
+
+        }
+        .bio{
+            display: inline;
+        }
+        
+
+    </style>
+    <body>
+        <div class="cima">
+            <header style="display: flex;">
+                <div class="usuario">
+                    <img src="imagens/perfil.jpeg" alt="" style="border-radius: 48%; margin-left: 3%; margin-top: 2%;">
+                </div>
+                <div style="display: inline; border: solid white; margin-left: 5%;">
+                    <p style="margin-top: 4%; margin-left: 0.5%; font-size: 200%; border: solid white; "> @mavie <sup>tv</sup> 
+                        
+                        <p>16y <br>
+                        21 | 🇧🇷 <br>
+                        Everything you lose is a step you take!</p>
+                </div>
+                    
+                
+                <div class="usuario" >
+                    <button type="submit" class="botao" id="botao">Seguir</button> <br>
+                    <p style="font-size: 200%; margin-left: 10%; margin-top: 15%; border: solid white;"><b>8</b> postagens</p>  <p style="margin-left: 2%; margin-top: 15%; font-size: 200%; border: solid white;"><b>357</b> seguidores</p>  <p style="margin-left: 2%; margin-top: 15%; font-size: 200%; border: solid white;"><b>250</b> seguindo</p>
+                </div>
+ 
+            </header>
+        </div>
+
+        <div class="lado">
+            <aside>
+                <a href="pagPrincipal.html"><button type="submit"><img src="imagens/iconecasinha.png" alt="A imagem não carregou"></button></a>
+                <a href="postagem.html"><button type="submit"><img src="imagens/iconeld4.jpeg" alt="A imagem não carregou"></button></a><br>
+                <a href="pesquisa.html"><button type="submit"><img src="imagens/lupa.png" alt="A imagem não carregou"></button></a> <br>
+                <a href="camera.html"><button type="submit"><img src="imagens/iconeld3.jpeg" alt="A imagem não carregou"></button></a> <br>
+                <button type="submit"><img src="imagens/iconeld2.jpeg" alt="A imagem não carregou"></button>
+            </aside>
+        
+
+        <div class="posts">
+            <section class="parte1">
+                <img src="imagens/Sushi fake story.jpg" alt="">
+                <img src="imagens/drink.jpeg" alt="" style="margin-left: 1%;">
+                <img src="imagens/praia1.jpeg" alt="" style="margin-left: 1%;">
+                <img src="imagens/praia2.jpeg" alt="" style="margin-left: 1%;">
+            </section>
+            <br>
+            <section class="parte2">
+                <img src="imagens/ela.jpeg" alt="" >
+                <img src="imagens/ler.jpeg" alt="" style="margin-left: 1%;">
+                <img src="imagens/ela2.jpeg" alt="" style="margin-left: 1%;">
+                <img src="imagens/ela3.jpeg" alt="" style="margin-left: 1%;">
+            </section>     
+        </div>
+        </div>
+    </body>
+    <script>
+        const botao = document.getElementById('botao');
+
+        // Adiciona um "ouvinte" de evento para o clique
+        botao.addEventListener('click', function() {
+        // Altera o texto do botão
+        botao.textContent = 'Seguindo';
+
+         this.classList.add('clicado');
+        });
+    </script>
+</html>

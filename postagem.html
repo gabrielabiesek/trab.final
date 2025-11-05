@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="imagens/logoIcone.png" type="image/x-icon">
+        <title>GT Entertainment</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f0f0;
+        padding: 30px;
+        }
+
+        .upload-container {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        display: inline-block;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        img {
+        margin-top: 15px;
+        max-width: 200px;
+        border-radius: 10px;
+        }
+    </style>
+    </head>
+    <body>
+
+    <div class="upload-container">
+        <h2>Escolha a foto que deseja postar</h2>
+        <input type="file" id="foto" accept="image/*">
+        <br>
+        <img id="preview" src="" alt="Prévia da imagem">
+        <a href="perfil.html"></a><button></button>
+    </div>
+
+    <script>
+        const input = document.getElementById('foto');
+        const preview = document.getElementById('preview');
+
+        input.addEventListener('change', () => {
+        const arquivo = input.files[0];
+        if (arquivo) {
+            const leitor = new FileReader();
+            leitor.onload = function(e) {
+            preview.src = e.target.result; // Mostra a imagem na tela
+            }
+            leitor.readAsDataURL(arquivo);
+        }
+        });
+    </script>
+
+    <br>
+    <br>
+    <form action="/upload-imagem" method="post" enctype="multipart/form-data">
+
+        <!-- <a href="perfil.html"></a> -->
+        <button type="submit" style="font-size: 200%;">POSTAR</button>
+    </form>
+    </body>
+</html>

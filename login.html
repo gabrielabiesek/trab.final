@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="shortcut icon" href="imagens/logoIcone.png" type="image/x-icon">
+            <title>GT Entertainment</title>
+    </head>
+    <style>
+        body{
+            text-align: center;
+            background-color: rgb(245, 236, 255);
+        }
+        h1{
+            text-align: center;
+            font-size: 350%;
+            margin-top: 3%;
+        }
+        label{
+            display: inline-block;
+        }
+        .cadastro1{
+            width: 550px;
+            height: 400px;
+            margin-top: 5%;
+            font-size: 200%;
+            text-align: center;
+            display: inline-block;
+            justify-content: center;
+            background-color:  rgb(230, 230, 230);
+        }
+        .cadastro{
+            text-align: center;
+            margin-top: 5%;
+        }
+        .botão{
+            font-size: 90%;
+            border: solid black;
+            background-color: rgb(245, 236, 255);
+        }
+        input{
+            font-size: 80%;
+        }
+    </style>
+    <body>
+        <h1>GT Entertainment</h1>
+            <div class="cadastro1">
+                <form id="cadastro">
+                    <p></p>
+                    <label for="e-mail">Insira seu e-mail:</label><br>
+                    <input type="text" id="e-mail" required>
+                    <p></p>
+                    <label for="senha">Insira sua senha:</label><br>
+                    <input type="password" id="senha" required>
+                    <p></p>
+                    <button id="botãoPrincipal" class="botão" type="submit">Login</button>
+                    <br>
+                    <br>
+                    <button class="botão"><a href="pagInicial.html">Voltar ao inicio</a></button>
+                </form>
+                 
+            </div>
+        </section>
+        
+        
+        <script>
+
+            async function cadastrarUsuario(name, user,  age, email, password) {
+            try {
+                // Seleciona a rota a ser usada
+                const resposta = await fetch('http://localhost:3000/cadUsuario', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                // Encaminha os dados que vieram como parametro no corpo do arquivo JSON
+                body: JSON.stringify({
+                    nome_completo: name,
+                    user_pessoa: user,
+                    idade: age,
+                    email_usuario: email,
+                    senha_usuario: password
+                })
+            });
+        
+            // A variável dados recebe um objeto produto
+            const dados = await resposta.json();
+            
+            if (resposta.ok) {
+                console.log("O novo usuário foi cadastrado com sucesso.")
+                window.location.replace("pagPrincipal.html"); // faz o redirecionamento
+            } else {
+                switch (resposta.status) {
+                    case 400:
+                    console.warn('⚠️ Produto não encontrado');
+                    break;
+                    case 401:
+                    console.warn('⚠️ Produto não encontrado');
+                    break;
+                    case 500:
+                    console.warn('💥 Erro interno no servidor. Tente novamente mais tarde.');
+                    break;
+                    default:
+                console.warn(`❗ Erro inesperado: ${resposta.status}`);;
+                }
+
+                console.debug('Detalhes do erro:', dados.mensagem || dados);
+            }} catch (erro) {
+            console.error('🚫 Erro ao tentar buscar o produto:', erro.message);
+            }
+            }                    
+
+            const form = document.getElementById('cadastro');
+
+            form.addEventListener("submit", function(event){
+                event.preventDefault();
+                
+                //let nome = document.getElementById('nome').value;
+                //let user = document.getElementById('user').value;
+                //let idade = document.getElementById('idade').value;
+                //let email = document.getElementById('email').value;
+                //let senha = document.getElementById('senha').value;
+                
+           
+                    
+                window.location.replace("pagPrincipal.html"); // faz o redirecionamento
+                
+            });
+            
+        </script>
+    </body>
+</html>

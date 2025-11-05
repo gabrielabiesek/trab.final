@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="imagens/logoIcone.png" type="image/x-icon">
+        <title>GT Entertainment</title>
+        <link rel="stylesheet" href="style2.css">
+    </head>
+    <body>
+        <div class="conversas">
+            <div class="fotoperfil">
+                <div class="cabecalho">
+                    <img src="thalia.jpg" alt="Avatar" class="avatar">
+                    <div class="contact-info">
+                        <div class="contact-name">@thailacasl</div>
+                        <div class="contact-status">online</div>
+                    </div>
+                </div>
+            <div class=
+            </div>
+            <div class="pontinhos">
+                <button class="acao">...</button>
+            </div>
+        </div>
+
+        <div class="mensagens" id="mensagens" role="log" aria-live="polite">
+            <div class="data">Hoje</div>
+
+            <div class="recebida">
+                <div class="bubble">
+                    <div class="respondida" hidden>
+
+                    </div>
+                    <p>oii, tudo bem?</p>
+                    <div class="meta"><span class="time">10:12</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="enviada">
+            <div class="bubble">
+                <div class="respondida" hidden></div>
+                <p>to bem e vc?</p>
+                <div class="meta"><span class="time">10:13</span><span class="status">✓✓</span></div>
+            </div>
+        </div>
+
+        <div class="vizu" id="vizu" hidden>
+            <div class="informacao">
+                <strong>Respondendo a</strong>
+                <div class="responder" id="responder"></div>
+            </div>
+            <button id="cancelarresp" aria-label="Cancelar resposta">✕</button>
+        </div>
+
+        <div class="areadetexto" aria-label="Enviar mensagem">
+            <button id="emoji" class="emoji" title="Emoji">😊</button>
+            <textarea id="envio" placeholder="Escreva uma mensagem..." rows="1" aria-label="Mensagem"></textarea>
+            <button id="enviar" class="enviar" aria-label="Enviar">Enviar</button>
+        </div>
+    </body>
+    <script>
+    (function () {
+        const mensagens = document.getElementById('mensagens');
+        const input = document.getElementById('envio');
+        const enviar = document.getElementById('enviar');
+        const vizu = document.getElementById('vizu');
+        const responder = document.getElementById('responder');
+        const cancelarresp = document.getElementById('cancelaresp');
+    
+        let currentReply = null;
+
+        function mandarmens() {
+            const text = input.value.trim();
+            if (!text) return;
+
+            const now = new Date();
+            const hh = String(now.getHours()).padStart(2, '0');
+            const mm = String(now.getMinutes()).padStart(2, '0');
+
+            const msg = document.createElement('div');
+            msg.className = 'enviada';
+            msg.dataset.id = Date.now();
+
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+
+            if (currentReply) {
+                const replied = document.createElement('div');
+                replied.className = 'respondida';
+                replied.textContent = currentReply;
+                replied.hidden = false;
+                bubble.appendChild(replied);
+            }
+
+            const p = document.createElement('p');
+            p.textContent = text;
+            bubble.appendChild(p);
+
+            const meta = document.createElement('div');
+            meta.className = 'meta';
+            meta.innerHTML = `<span class="time">${hh}:${mm}</span><span class="status">✓✓</span>`;
+            bubble.appendChild(meta);
+
+            msg.appendChild(bubble);
+            messageArea.appendChild(msg);
+
+            // limpar input e estado de resposta
+            input.value = '';
+            clearReply();
+
+            scrollToBottom();
+        }
+
+        // Scroll para o final
+        function scrollToBottom() {
+            messageArea.scrollTop = messageArea.scrollHeight;
+        }
+
+        // Ativa modo resposta ao clicar em uma mensagem
+        messageArea.addEventListener('click', (e) => {
+            const messageEl = e.target.closest('.message');
+            if (!messageEl) return;
+            // pegar texto da bolha clicada
+            const bubbleP = messageEl.querySelector('.bubble > p');
+            if (!bubbleP) return;
+            currentReply = bubbleP.textContent;
+            replyTextEl.textContent = currentReply.length > 80 ? currentReply.slice(0,80) + '…' : currentReply;
+            replyPreview.hidden = false;
+            input.focus();
+        });
+
+        // Cancela resposta
+        cancelReply.addEventListener('click', () => {
+            clearReply();
+            input.focus();
+        });
+
+        function clearReply() {
+            currentReply = null;
+            replyTextEl.textContent = '';
+            replyPreview.hidden = true;
+        }
+
+        // Enviar ao clicar
+        enviar.addEventListener('click', enviada);
+
+        // Enter para enviar, Shift+Enter para nova linha
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Inicial scroll
+        scrollToBottom();
+    })();
+    </script>
+</html>

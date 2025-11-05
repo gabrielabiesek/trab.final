@@ -1,0 +1,152 @@
+        button{
+            background-color: white;
+            color: black;
+            border: solid white;
+        }
+        header{
+            margin-left: 10%;
+            font-size: 200%;
+        }
+        .cima{
+            border: solid white;
+            font-family: monospace;
+
+        }
+        hr{
+           color: rgba(214, 214, 214, 0.856);
+           margin-top: 2%;
+        }
+        .lado{
+            border: 1px solid rgba(214, 214, 214, 0.856); 
+            border-radius: 4%;  
+            margin-right: 94%;
+            margin-top: 5%;
+            display: flex;
+        }
+        .post1{
+            width: 528px;
+            height: 779px;
+            margin-left: 125%;
+            margin-right: 30%;
+            background-color:  white;   
+            border: 1px solid rgba(214, 214, 214, 0.856); 
+            border-radius: 2%;   
+               
+        }
+        mark{
+            color: rgb(38, 38, 158);
+            background-color: white;
+        }
+        .legenda{
+            margin-left: 3%;
+        }
+        .post2{
+            width: 528px;
+            height: 710px;
+            margin-left: 125%;
+            margin-right: 30%;
+            background-color:  white;   
+            border: 1px solid rgba(214, 214, 214, 0.856); 
+            margin-top: 20%;
+            margin-bottom: 10%;
+            border-radius: 2%;
+        }
+        .usuario{
+            display: flex;
+        }
+        .post3{
+            width: 528px;
+            height: 710px;
+            margin-left: 125%;
+            margin-right: 30%;
+            background-color:  white;   
+            border: 1px solid rgba(214, 214, 214, 0.856); 
+            margin-top: 20%;
+            margin-bottom: 10%; 
+            border-radius: 2%;
+        }
+        .post4{
+            width: 528px;
+            height: 710px;
+            margin-left: 125%;
+            margin-right: 30%;
+            background-color:  white;   
+            border: 1px solid rgba(214, 214, 214, 0.856); 
+            margin-top: 20%;
+            margin-bottom: 10%;  
+            border-radius: 2%;
+        }
+        .post5{
+            width: 528px;
+            height: 710px;
+            margin-left: 125%;
+            margin-right: 30%;
+            background-color:  white;   
+            border: 1px solid rgba(214, 214, 214, 0.856); 
+            margin-top: 20%;
+            margin-bottom: 10%;
+            border-radius: 2%;
+        }
+        .story-wrapper {
+            position: relative;
+            width: 66px;
+            height: 66px;
+            margin: 0 8px;
+            padding: 3px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            transition: background 0.3s ease;
+        }
+
+        .story-wrapper.viewed {
+            background: #dbdbdb;
+        }
+
+        .story {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            padding: 0;
+            background-color: white;
+            display: block;
+            object-fit: cover;
+            margin: 0;
+            border: 3px solid white;
+        }
+        .userstory {
+            font-size: 15px;
+            display: inline-block;
+            text-align: center;
+            margin: 0 4px;
+        }
+        
+        .userstory p {
+            margin-top: 8px;
+            margin-bottom: 0;
+        }
+
+        .userstory a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .like-button {
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            font-size: 24px;
+            transition: transform 0.2s;
+        }
+
+        .like-button:hover {
+            transform: scale(1.2);
+        }
+
+        .post-actions {
+            margin-left: 3%;
+            padding: 10px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }

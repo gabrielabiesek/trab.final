@@ -24,7 +24,7 @@ body{
   -moz-osx-font-smoothing:grayscale;
 }
 
-.conversas{
+.chat-container{
   width: 940px;
   max-width: calc(100% - 48px);
   height: 720px;
@@ -37,7 +37,7 @@ body{
 }
 
 /* header */
-.fotoperfil{
+.chat-header{
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -45,13 +45,13 @@ body{
   border-bottom:1px solid #eef2f4;
   background:linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
 }
-.cabecalho{display:flex;align-items:center;gap:12px}
+.header-left{display:flex;align-items:center;gap:12px}
 .avatar{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
 .contact-name{font-weight:600}
 .contact-status{font-size:12px;color:var(--muted)}
 
 /* message area */
-.mensagens{
+.message-area{
   flex:1;
   padding:20px;
   overflow:auto;
@@ -64,11 +64,11 @@ body{
   scrollbar-width:thin;
   scrollbar-color:#d1d5db transparent;
 }
-.conversas::-webkit-scrollbar{width:10px}
-.conversas::-webkit-scrollbar-thumb{background:#e2e6ea;border-radius:999px}
+.message-area::-webkit-scrollbar{width:10px}
+.message-area::-webkit-scrollbar-thumb{background:#e2e6ea;border-radius:999px}
 
 /* date separator */
-.data{
+.date-separator{
   align-self:center;
   background:#eef2f4;
   color:var(--muted);
@@ -79,9 +79,9 @@ body{
 }
 
 /* message bubbles */
-.menssagens{display:flex}
-.recebida{justify-content:flex-start}
-.respondida{justify-content:flex-end}
+.message{display:flex}
+.message.received{justify-content:flex-start}
+.message.sent{justify-content:flex-end}
 
 .bubble{
   max-width:72%;
@@ -93,19 +93,19 @@ body{
   font-size:14px;
   line-height:1.35;
 }
-.recebida .bubble{
+.message.received .bubble{
   background:linear-gradient(180deg,#fff,#fbfdff);
   border-bottom-left-radius:6px;
   color:#0f1720;
 }
-.respondida .bubble{
+.message.sent .bubble{
   background:linear-gradient(180deg,var(--accent), #0077d9);
   color:#fff;
   border-bottom-right-radius:6px;
 }
 
 /* replied preview in bubble */
-.bubble .respondida{
+.bubble .replied{
   background:rgba(255,255,255,0.12);
   padding:8px 10px;
   border-radius:10px;
@@ -114,14 +114,14 @@ body{
   opacity:0.95;
   color:rgba(255,255,255,0.92);
 }
-.enviada .bubble .respondida{background:linear-gradient(90deg,#f3f5f7,#eef2f4);color:#374151}
+.message.received .bubble .replied{background:linear-gradient(90deg,#f3f5f7,#eef2f4);color:#374151}
 
 /* meta (time/status) */
 .meta{display:flex;gap:8px;align-items:center;margin-top:6px;font-size:12px;color:var(--muted)}
 .message.sent .meta{color:rgba(255,255,255,0.9)}
 
 /* reply preview bar */
-.resposta{
+.reply-preview{
   display:flex;
   align-items:center;
   gap:12px;
@@ -134,7 +134,7 @@ body{
 .reply-text{font-size:13px;color:#6b7280;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* input area */
-.mensagens{
+.chat-input-area{
   display:flex;
   gap:10px;
   align-items:flex-end;
@@ -142,10 +142,10 @@ body{
   border-top:1px solid #eef2f4;
   background:linear-gradient(180deg, #fff, #fbfdff);
 }
-.attach-btn, .emoji{
+.attach-btn, .emoji-btn{
   background:transparent;border:0;font-size:20px;cursor:pointer;padding:8px;border-radius:8px;
 }
-.attach-btn:hover, .emoji:hover{background:#f3f4f6}
+.attach-btn:hover, .emoji-btn:hover{background:#f3f4f6}
 #message-input{
   flex:1;
   min-height:42px;
@@ -161,7 +161,7 @@ body{
 }
 #message-input:focus{box-shadow:0 6px 18px rgba(0,0,0,0.06);border-color:#cfe8ff}
 
-.enviar{
+.send-btn{
   background:var(--accent);
   color:#fff;
   border:0;
@@ -175,11 +175,15 @@ body{
   justify-content:center;
   font-size:16px;
 }
-.enviar:active{transform:translateY(1px)}
-.enviar[disabled]{opacity:0.6;cursor:not-allowed}
+.send-btn:active{transform:translateY(1px)}
+.send-btn[disabled]{opacity:0.6;cursor:not-allowed}
 
 /* small screens */
 @media (max-width:760px){
   .chat-container{width:100%;height:100vh;border-radius:0}
   .avatar{width:40px;height:40px}
 }
+
+
+
+

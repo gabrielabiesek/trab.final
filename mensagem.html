@@ -1,77 +1,89 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="imagens/logoIcone.png" type="image/x-icon">
-        <title>GT Entertainment</title>
-        <link rel="stylesheet" href="style2.css">
-    </head>
-    <body>
-        <div class="conversas">
-            <div class="fotoperfil">
-                <div class="cabecalho">
-                    <img src="thalia.jpg" alt="Avatar" class="avatar">
-                    <div class="contact-info">
-                        <div class="contact-name">@thailacasl</div>
-                        <div class="contact-status">online</div>
-                    </div>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Imagens/logoIcone.png" type="image/x-icon">
+    <title>GT Entertainment</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Cabeçalho com avatar e nome -->
+        <div class="chat-header">
+            <div class="header-left">
+                <img src="imagens/thalia.jpg" alt="Avatar" class="avatar">
+                <div class="contact-info">
+                    <div class="contact-name">@thailacasal</div>
+                    <div class="contact-status">online</div>
                 </div>
-            <div class=
             </div>
-            <div class="pontinhos">
-                <button class="acao">...</button>
+            <div class="header-actions">
+                <!-- ícones/ações -->
+                <button class="btn">...</button>
             </div>
         </div>
 
-        <div class="mensagens" id="mensagens" role="log" aria-live="polite">
-            <div class="data">Hoje</div>
+        
+        <div class="message-area" id="message-area" role="log" aria-live="polite">
+            <!-- Exemplo de separador de data -->
+            <div class="date-separator">Hoje</div>
 
-            <div class="recebida">
+            <!-- Mensagens de exemplo -->
+            <div class="message received" data-id="1">
                 <div class="bubble">
-                    <div class="respondida" hidden>
-
+                    <div class="replied" hidden>
+                        <!-- texto da mensagem respondida será inserido aqui -->
                     </div>
-                    <p>oii, tudo bem?</p>
+                    <p>Oiie, tudo bem?</p>
                     <div class="meta"><span class="time">10:12</span></div>
                 </div>
             </div>
-        </div>
 
-        <div class="enviada">
-            <div class="bubble">
-                <div class="respondida" hidden></div>
-                <p>to bem e vc?</p>
-                <div class="meta"><span class="time">10:13</span><span class="status">✓✓</span></div>
+            <div class="message sent" data-id="2">
+                <div class="bubble">
+                    <div class="replied" hidden></div>
+                    <p>Tô bem, e você?</p>
+                    <div class="meta"><span class="time">10:13</span><span class="status">✓✓</span></div>
+                </div>
             </div>
         </div>
 
-        <div class="vizu" id="vizu" hidden>
-            <div class="informacao">
+        <!-- Preview de resposta (quando o usuário está respondendo a uma mensagem) -->
+        <div class="reply-preview" id="reply-preview" hidden>
+            <div class="reply-info">
                 <strong>Respondendo a</strong>
-                <div class="responder" id="responder"></div>
+                <div class="reply-text" id="reply-text"></div>
             </div>
-            <button id="cancelarresp" aria-label="Cancelar resposta">✕</button>
+            <button id="cancel-reply" aria-label="Cancelar resposta">✕</button>
         </div>
 
-        <div class="areadetexto" aria-label="Enviar mensagem">
-            <button id="emoji" class="emoji" title="Emoji">😊</button>
-            <textarea id="envio" placeholder="Escreva uma mensagem..." rows="1" aria-label="Mensagem"></textarea>
-            <button id="enviar" class="enviar" aria-label="Enviar">Enviar</button>
+        <!-- Área de entrada com botão de enviar, emoji e anexos -->
+        <div class="chat-input-area" aria-label="Enviar mensagem">
+            <label for="file-input" class="attach-btn" title="Anexar foto">📷
+                <input type="file" id="file-input" accept="image/*" hidden>
+            </label>
+            <button id="emoji-button" class="emoji-btn" title="Emoji">😊</button>
+            <textarea id="message-input" placeholder="Escreva uma mensagem..." rows="1" aria-label="Mensagem"></textarea>
+            <button id="send-button" class="send-btn" aria-label="Enviar">Enviar</button>
         </div>
-    </body>
+    </div>
+
+    <script src="script.js"></script>
     <script>
+    // Funcionalidade básica de envio e resposta (citar) - complementar ao script.js
     (function () {
-        const mensagens = document.getElementById('mensagens');
-        const input = document.getElementById('envio');
-        const enviar = document.getElementById('enviar');
-        const vizu = document.getElementById('vizu');
-        const responder = document.getElementById('responder');
-        const cancelarresp = document.getElementById('cancelaresp');
-    
-        let currentReply = null;
+        const messageArea = document.getElementById('message-area');
+        const input = document.getElementById('message-input');
+        const sendButton = document.getElementById('send-button');
+        const replyPreview = document.getElementById('reply-preview');
+        const replyTextEl = document.getElementById('reply-text');
+        const cancelReply = document.getElementById('cancel-reply');
 
-        function mandarmens() {
+        let currentReply = null; // guarda texto da mensagem sendo respondida
+
+        // Enviar mensagem
+        function sendMessage() {
             const text = input.value.trim();
             if (!text) return;
 
@@ -80,7 +92,7 @@
             const mm = String(now.getMinutes()).padStart(2, '0');
 
             const msg = document.createElement('div');
-            msg.className = 'enviada';
+            msg.className = 'message sent';
             msg.dataset.id = Date.now();
 
             const bubble = document.createElement('div');
@@ -88,7 +100,7 @@
 
             if (currentReply) {
                 const replied = document.createElement('div');
-                replied.className = 'respondida';
+                replied.className = 'replied';
                 replied.textContent = currentReply;
                 replied.hidden = false;
                 bubble.appendChild(replied);
@@ -144,7 +156,7 @@
         }
 
         // Enviar ao clicar
-        enviar.addEventListener('click', enviada);
+        sendButton.addEventListener('click', sendMessage);
 
         // Enter para enviar, Shift+Enter para nova linha
         input.addEventListener('keydown', (e) => {
@@ -158,4 +170,5 @@
         scrollToBottom();
     })();
     </script>
+</body>
 </html>

@@ -68,16 +68,13 @@
             async function cadastrarUsuario(name, user,  age, email, password) {
             try {
                 // Seleciona a rota a ser usada
-                const resposta = await fetch('http://localhost:3000/cadUsuario', {
+                const resposta = await fetch('localhost:3000/cadConta', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 // Encaminha os dados que vieram como parametro no corpo do arquivo JSON
                 body: JSON.stringify({
-                    nome_completo: name,
-                    user_pessoa: user,
-                    idade: age,
                     email_usuario: email,
                     senha_usuario: password
                 })
@@ -87,7 +84,7 @@
             const dados = await resposta.json();
             
             if (resposta.ok) {
-                console.log("O novo usuário foi cadastrado com sucesso.")
+                console.log("O usuário entrou com sucesso.")
                 window.location.replace("pagPrincipal.html"); // faz o redirecionamento
             } else {
                 switch (resposta.status) {
@@ -121,8 +118,7 @@
                 //let email = document.getElementById('email').value;
                 //let senha = document.getElementById('senha').value;
                 
-           
-                    
+                
                 window.location.replace("pagPrincipal.html"); // faz o redirecionamento
                 
             });

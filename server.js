@@ -44,14 +44,36 @@ app.post('/cadUsuario', (req, res) => {
 });
 
 //Rota GET - Cadastrar
-app.get('/cadConta', (req, res) => {
-  db.query('SELECT * FROM pessoa', (err, results) => {
+app.post('/cadConta', (req, res) => {
+  const { email_usuario, senha_usuario } = req.body;
+
+  if (!email_usuario || !senha_usuario) {
+    return res.status(400).json({ error: 'Email e senha são obrigatórios' });
+  }
+
+  const sql = 'SELECT * FROM pessoa WHERE email_usuario = ? AND senha_usuario = ?';
+  db.query(sql, [email_usuario, senha_usuario], (err, results) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
-    res.json(results);
+
+    if (results.length === 0) {
+      return res.status(401).json({ error: 'Credenciais inválidas' });
+    }
+
+    // Login bem-sucedido
+    const user = results[0];
+    res.json({
+      message: 'Login bem-sucedido',
+      user: {
+        id: user.id,
+        email_usuario: email,
+        senha_usuario: password        
+      }
+    });
   });
 });
+
 
 // Inicializa o servidor
 app.listen(PORT, () => {

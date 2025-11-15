@@ -25,12 +25,13 @@
         }
         .post1{
             width: 528px;
-            height: 779px;
+            height: auto;
             margin-left: 125%;
             margin-right: 30%;
             background-color:  white;   
             border: 1px solid rgba(214, 214, 214, 0.856); 
-            border-radius: 2%;   
+            border-radius: 2%; 
+            border: auto;  
                
         }
         mark{
@@ -42,7 +43,7 @@
         }
         .post2{
             width: 528px;
-            height: 710px;
+            height: auto;
             margin-left: 125%;
             margin-right: 30%;
             background-color:  white;   
@@ -56,7 +57,7 @@
         }
         .post3{
             width: 528px;
-            height: 710px;
+            height: auto;
             margin-left: 125%;
             margin-right: 30%;
             background-color:  white;   
@@ -67,7 +68,7 @@
         }
         .post4{
             width: 528px;
-            height: 710px;
+            height: auto;
             margin-left: 125%;
             margin-right: 30%;
             background-color:  white;   
@@ -78,7 +79,7 @@
         }
         .post5{
             width: 528px;
-            height: 710px;
+            height: auto;
             margin-left: 125%;
             margin-right: 30%;
             background-color:  white;   
@@ -149,4 +150,10 @@
             display: flex;
             gap: 15px;
             align-items: center;
+        }
+
+        .enviar{
+            background-color: blue;
+            color: white;
+            
         }

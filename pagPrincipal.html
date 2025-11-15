@@ -147,98 +147,145 @@
             
             <div>
                 <main>
-                    
 
+                    <!-- POST 1 -->
                     <div class="post1">
                         <div class="usuario">
                             <img src="Imagens/rafa.jpg" alt="" style="border-radius: 50%; margin-left: 3%; margin-top: 5%;"> 
                             <p style="margin-top: 10%; margin-left: 3%;"> @raphael_montes </p>
-                            
                         </div>
+
                         <img src="imagens/rafa2.jpg" alt="" style="margin-top: 5%; margin-left: 3.5%;">
+
                         <div class="post-actions">
                             <button class="like-button" onclick="toggleLike(this)">🤍</button>
                             <img src="imagens/icone2.png" alt="" style="margin-top: 1%;">
                             <img src="imagens/icone3.png" alt="">
                         </div>
-                        <p class="legenda" > <mark style="color: rgb(51, 46, 46); background-color: rgb(236, 233, 233);">@rafael_montes</mark>
+
+                        <p class="legenda">
+                            <mark style="color: rgb(51, 46, 46); background-color: rgb(236, 233, 233);">@rafael_montes</mark>
                             Hoje é o <mark>#DiaMundialDoLivro</mark> 📚 ♥️ É uma alegria contar histórias <br>
                             que emocionam e surpreendem leitores de todo o mundo! E que deixa, <br>
                             vocês sem dormir! rs 😁
-                            <br>
-                            <br>
+                            <br><br>
                             Qual é o seu livro favorito?
                         </p>
-                    </div>  
-                    
+
+                        <!-- comentários post1 -->
+                        <div id="comentarios_post1" class="comentarios"></div>
+                        <input style="margin-left: 2.5%;" type="text" id="input_post1" placeholder="Adicione um comentário..." 
+                               onkeydown="if(event.key==='Enter'){ adicionarComentario('input_post1','comentarios_post1'); }">
+                        <button class="enviar" type="submit">enviar</button>
+                    </div>
+
+                    <!-- POST 2 -->
                     <div class="post2">
                         <div class="usuario">
                             <img src="imagens/eu.jpg" alt="" style="border-radius: 47%; margin-left: 3%; margin-top: 5%;"> 
                             <p style="margin-top: 10%; margin-left: 3%;">@gabybiiesek</p>
-                            
                         </div>
-                        
+
                         <img src="imagens/nos.jpg" alt="" style="margin-left: 8%; margin-top: 5%;">
+
                         <div class="post-actions">
                             <button class="like-button" onclick="toggleLike(this)">🤍</button>
                             <img src="imagens/icone2.png" alt="" style="margin-top: 1%;">
                             <img src="imagens/icone3.png" alt="">
                         </div>
-                        <p style="margin-left: 3.5%;"> <mark style="color: rgb(51, 46, 46); background-color: rgb(236, 233, 233);">@gabybiiesek</mark>
+
+                        <p style="margin-left: 3.5%;">
+                            <mark style="color: rgb(51, 46, 46); background-color: rgb(236, 233, 233);">@gabybiiesek</mark>
                             🩷
                         </p>
+
+                        <!-- comentários post2 -->
+                        <div id="comentarios_post2" class="comentarios"></div>
+                        <input style="margin-left: 2.5%;" type="text" id="input_post2" placeholder="Adicione um comentário..." 
+                               onkeydown="if(event.key==='Enter'){ adicionarComentario('input_post2','comentarios_post2'); }">
+                        <button type="submit">enviar</button>
                     </div>
 
+                    <!-- POST 3 -->
                     <div class="post3">
                         <div class="usuario">
                             <img src="imagens/grl.jpg" alt="" style="border-radius: 50%; margin-left: 3%; margin-top: 5%;">
                             <p style="margin-top: 10%; margin-left: 3%;">@grltruck</p>
                         </div>
-                        <img src="imagens/grl2.jpg" alt="" style="margin-left: 10%; margin-top: 5%;"><br>
+
+                        <img src="imagens/grl2.jpg" alt="" style="margin-left: 10%; margin-top: 5%;">
+
                         <div class="post-actions">
                             <button class="like-button" onclick="toggleLike(this)">🤍</button>
                             <img src="imagens/icone2.png" alt="" style="margin-top: 1%;">
                             <img src="imagens/icone3.png" alt="">
                         </div>
-                         <p style="margin-left: 3.5%;"> <mark style="color: rgb(51, 46, 46); background-color: rgb(236, 233, 233);">@grltruck</mark>
+
+                        <p style="margin-left: 3.5%;">
+                            <mark style="color: rgb(51, 46, 46); background-color: rgb(236, 233, 233);">@grltruck</mark>
                             Caminhão rosa mais lindo do Brasil! 🩷
-                        </p>                       
+                        </p>
+
+                        <!-- comentários post3 -->
+                        <div id="comentarios_post3" class="comentarios"></div>
+                        <input style="margin-left: 2.5%;" type="text" id="input_post3" placeholder="Adicione um comentário..." 
+                               onkeydown="if(event.key==='Enter'){ adicionarComentario('input_post3','comentarios_post3'); }">
                     </div>
 
+                    <!-- POST 4 -->
                     <div class="post4">
                         <div class="usuario">
                             <img src="imagens/thalia.jpg" alt="" style="border-radius: 50%; margin-left: 3%; margin-top: 5%;">
                             <p style="margin-top: 10%; margin-left: 3%;">@thailacasal</p>
                         </div>
+
                         <img src="imagens/thalia2.jpg" alt="" style="margin-left: 5%; margin-top: 5%;">
+
                         <div class="post-actions">
                             <button class="like-button" onclick="toggleLike(this)">🤍</button>
                             <img src="imagens/icone2.png" alt="" style="margin-top: 1%;">
                             <img src="imagens/icone3.png" alt="">
                             <img src="imagens/icone4.png" alt="" style="margin-left: auto;">
                         </div>
-                         <p style="margin-left: 3.5%;"> <mark style="color: rgb(51, 46, 46); background-color: rgb(236, 233, 233);">@thailacasal</mark>
+
+                        <p style="margin-left: 3.5%;">
+                            <mark style="color: rgb(51, 46, 46); background-color: rgb(236, 233, 233);">@thailacasal</mark>
                             Interclasse 2k25
-                        </p> 
+                        </p>
+
+                        <!-- comentários post4 -->
+                        <div id="comentarios_post4" class="comentarios"></div>
+                        <input style="margin-left: 2.5%;" type="text" id="input_post4" placeholder="Adicione um comentário..." 
+                               onkeydown="if(event.key==='Enter'){ adicionarComentario('input_post4','comentarios_post4'); }">
                     </div>
 
+                    <!-- POST 5 -->
                     <div class="post5">
                         <div class="usuario">
                             <img src="imagens/eu.jpg" alt="" style="border-radius: 50%; margin-left: 3%; margin-top: 5%;">
                             <p style="margin-top: 10%; margin-left: 3%;">@gabybiiesek</p>
                         </div>
+
                         <img src="imagens/praia.jpg" alt="" style="margin-left: 8%; margin-top: 5%;">
+
                         <div class="post-actions">
                             <button class="like-button" onclick="toggleLike(this)">🤍</button>
                             <img src="imagens/icone2.png" alt="" style="margin-top: 1%;">
                             <img src="imagens/icone3.png" alt="">
                             <img src="imagens/icone4.png" alt="" style="margin-left: auto;">
                         </div>
-                        <p style="margin-left: 3.5%;"> <mark style="color: rgb(51, 46, 46); background-color: rgb(236, 233, 233);">@gabybiiesek</mark>
-                            Missing this place sm!
-                        </p> 
-                    </div>
 
+                        <p style="margin-left: 3.5%;">
+                            <mark style="color: rgb(51, 46, 46); background-color: rgb(236, 233, 233);">@gabybiiesek</mark>
+                            Missing this place sm!
+                        </p>
+
+                        <!-- comentários post5 -->
+                        <div id="comentarios_post5" class="comentarios"></div>
+                        <input style=" margin-left: 2.5%" type="text" id="input_post5" placeholder="Adicione um comentário..." 
+                               onkeydown="if(event.key==='Enter'){ adicionarComentario('input_post5','comentarios_post5'); }">
+                            
+                    </div>
 
                 </main>
             </div>
@@ -256,24 +303,32 @@
             }
         }
 
-        // Add click handlers to story links
+        // Função de comentários igual ao seu primeiro código
+        function adicionarComentario(idInput, idDiv) {
+            const input = document.getElementById(idInput);
+            const divComentario = document.getElementById(idDiv);
+
+            if (input.value.trim() !== "") {
+                const item = document.createElement('p');
+                item.textContent = "@gabybiiesek: " + input.value;
+                divComentario.appendChild(item);
+                input.value = '';
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const storyLinks = document.querySelectorAll('.userstory a');
             
             storyLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    // Mark the story as viewed
                     const storyWrapper = this.querySelector('.story-wrapper');
                     if (storyWrapper) {
                         storyWrapper.classList.add('viewed');
                     }
-                    
-                    // Store viewed state in localStorage
                     localStorage.setItem(this.getAttribute('href'), 'viewed');
                 });
             });
 
-            // Check for previously viewed stories
             storyLinks.forEach(link => {
                 if (localStorage.getItem(link.getAttribute('href')) === 'viewed') {
                     const storyWrapper = link.querySelector('.story-wrapper');

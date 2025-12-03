@@ -13,8 +13,45 @@ const app = express();
 const db = require('./db');
 require('dotenv').config();
 
+const path = require('path');
+const fs = require('fs');
+const multer = require('multer');
+
 app.use(express.json());
 app.use(cors())
+
+// Servir arquivos estáticos (imagens enviadas)
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(express.static(path.join(__dirname)));
+
+// Multer config
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, 'uploads'));
+  },
+  filename: function (req, file, cb) {
+    const unique = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const ext = path.extname(file.originalname);
+    cb(null, file.fieldname + '-' + unique + ext);
+  }
+});
+const upload = multer({ storage: storage });
+
+// Helper: posts.json path
+const POSTS_FILE = path.join(__dirname, 'posts.json');
+
+function readPosts() {
+  try {
+    const data = fs.readFileSync(POSTS_FILE, 'utf8');
+    return JSON.parse(data || '[]');
+  } catch (err) {
+    return [];
+  }
+}
+
+function writePosts(posts) {
+  fs.writeFileSync(POSTS_FILE, JSON.stringify(posts, null, 2));
+}
 
 const PORT = process.env.PORT || 3000;
 
@@ -75,7 +112,43 @@ app.post('/cadConta', (req, res) => {
 });
 
 
-// Inicializa o servidor
+// (listener moved to bottom after routes) - will listen after routes are defined
+
+// Rota para upload de imagem (novo post)
+app.post('/upload-imagem', upload.single('image'), (req, res) => {
+  try {
+    if (!req.file) return res.status(400).json({ error: 'Arquivo não enviado' });
+
+    const caption = req.body.caption || '';
+    const user = req.body.user || '@anônimo';
+
+    const post = {
+      id: Date.now(),
+      imageUrl: `/uploads/${req.file.filename}`,
+      caption: caption,
+      user: user,
+      avatar: req.body.avatar || 'imagens/eu.jpg',
+      createdAt: Date.now()
+    };
+
+    const posts = readPosts();
+    posts.push(post);
+    writePosts(posts);
+
+    res.status(201).json({ message: 'Upload feito', post });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Rota GET - retorna posts salvos
+app.get('/posts', (req, res) => {
+  const posts = readPosts();
+  res.json(posts);
+});
+
+// Inicializa o servidor (após definição de rotas)
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });

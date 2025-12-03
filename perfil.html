@@ -42,8 +42,8 @@
             font-size: larger;
             justify-content: center;
             margin-left: 10%;
-            background-color: rgb(0, 0, 218);
-            color: white;
+            background-color: rgb(194, 191, 191);
+            color: black;
             margin-top: 6%;
             cursor: pointer;
         }
@@ -60,14 +60,39 @@
         }
         .parte2{
             display: flex;
-
         }
         .bio{
             display: inline;
         }
 
-        
+        /* Wrapper para métricas (postagens / seguidores / seguindo) em linha */
+        .metrica{
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+            margin-left: 5%;
+            margin-top: 1%;
+        }
+        .metrica p{
+            margin: 0;
+            font-size: 200%;
+            border: solid white;
+        }
 
+        /* Forçar o container que tem o botão a empilhar conteúdo e centralizar métricas sob o botão */
+        .perfil-controles{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .perfil-controles .botao{
+            margin-left: 0;
+        }
+        .perfil-controles .metrica{
+            margin-left: 0;
+            margin-top: 3rem;
+        }
     </style>
     <body>
         <div class="cima">
@@ -84,9 +109,13 @@
                 </div>
                     
                 
-                <div class="usuario" >
-                    <button type="submit" class="botao" id="botao">Seguir</button> <br>
-                    <p class="seguidores" style="font-size: 200%; margin-left: 10%; margin-top: 15%; border: solid white;"><b>8</b> postagens</p>  <p style="margin-left: 2%; margin-top: 15%; font-size: 200%; border: solid white;"><b>357</b> seguidores</p>  <p style="margin-left: 2%; margin-top: 15%; font-size: 200%; border: solid white;"><b>250</b> seguindo</p>
+                <div class="usuario perfil-controles" >
+                    <button type="submit" class="botao" id="botao">editar perfil</button>
+                    <div class="metrica">
+                        <p class="seguidores"><b>8</b> postagens</p>
+                        <p><b>357</b> seguidores</p>
+                        <p><b>250</b> seguindo</p>
+                    </div>
                 </div>
  
             </header>
@@ -99,33 +128,41 @@
                 <a href="pesquisa.html"><button type="submit"><img src="imagens/lupa.png" alt="A imagem não carregou"></button></a> <br>
                 <a href="camera.html"><button type="submit"><img src="imagens/iconeld3.jpeg" alt="A imagem não carregou"></button></a> <br>
                 <button type="submit"><img src="imagens/iconeld2.jpeg" alt="A imagem não carregou"></button>
+                <a href="mensagem.html"><button type="submit"><img src="imagens/mensagens.jpg" alt=""></button></a>
+
             </aside>
         
 
-        <div class="posts">
-            <section class="parte1">
-                <img src="imagens/Sushi fake story.jpg" alt="">
-                <img src="imagens/drink.jpeg" alt="" style="margin-left: 1%;">
-                <img src="imagens/praia1.jpeg" alt="" style="margin-left: 1%;">
-                <img src="imagens/praia2.jpeg" alt="" style="margin-left: 1%;">
-            </section>
-            <br>
-            <section class="parte2">
-                <img src="imagens/ela.jpeg" alt="" >
-                <img src="imagens/ler.jpeg" alt="" style="margin-left: 1%;">
-                <img src="imagens/ela2.jpeg" alt="" style="margin-left: 1%;">
-                <img src="imagens/ela3.jpeg" alt="" style="margin-left: 1%;">
-            </section>     
-        </div>
+            <div class="posts">
+                <section class="parte1">
+                    <img src="imagens/Sushi fake story.jpg" alt="">
+                    <img src="imagens/drink.jpeg" alt="" style="margin-left: 1%;">
+                    <img src="imagens/praia1.jpeg" alt="" style="margin-left: 1%;">
+                    <img src="imagens/praia2.jpeg" alt="" style="margin-left: 1%;">
+                </section>
+                <br>
+                <section class="parte2">
+                    <img src="imagens/ela.jpeg" alt="" >
+                    <img src="imagens/ler.jpeg" alt="" style="margin-left: 1%;">
+                    <img src="imagens/ela2.jpeg" alt="" style="margin-left: 1%;">
+                    <img src="imagens/ela3.jpeg" alt="" style="margin-left: 1%;">
+                </section>     
+            </div>
         </div>
     </body>
+
     <script>
         const botao = document.getElementById('botao');
 
         // Adiciona um "ouvinte" de evento para o clique
         botao.addEventListener('click', function() {
         // Altera o texto do botão
-        botao.textContent = 'Seguindo';
+        botao.textContent = 'editar perfil';
+
+         this.classList.add('clicado');
+        });
+    </script>
+</html>
 
          this.classList.add('clicado');
         });

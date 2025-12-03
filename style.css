@@ -88,6 +88,18 @@
             margin-bottom: 10%;
             border-radius: 2%;
         }
+        /* Styles for posts generated dynamically from postagem.html */
+        .post-generated{
+            width: 528px;
+            height: auto;
+            margin-left: 125%;
+            margin-right: 30%;
+            background-color: white;
+            border: 1px solid rgba(214, 214, 214, 0.856);
+            margin-top: 20%;
+            margin-bottom: 10%;
+            border-radius: 2%;
+        }
         .story-wrapper {
             position: relative;
             width: 66px;
@@ -155,5 +167,17 @@
         .enviar{
             background-color: blue;
             color: white;
-            
+        }
+
+        /* Styles for dynamically generated posts */
+        .post-generated{
+            width: 528px;
+            height: auto;
+            margin-left: 125%;
+            margin-right: 30%;
+            background-color: white;
+            border: 1px solid rgba(214, 214, 214, 0.856);
+            margin-top: 20%;
+            margin-bottom: 10%;
+            border-radius: 2%;
         }

@@ -88,7 +88,7 @@
             margin-bottom: 10%;
             border-radius: 2%;
         }
-        /* Styles for posts generated dynamically from postagem.html */
+        
         .post-generated{
             width: 528px;
             height: auto;
@@ -169,7 +169,7 @@
             color: white;
         }
 
-        /* Styles for dynamically generated posts */
+    
         .post-generated{
             width: 528px;
             height: auto;

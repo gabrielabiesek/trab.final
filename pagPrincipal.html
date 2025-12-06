@@ -143,7 +143,6 @@
                     <a href="camera.html"><button type="submit"><img src="imagens/iconeld3.jpeg" alt="A imagem não carregou"></button></a> <br>
                     <a href="perfil.html"><button type="submit"><img src="imagens/iconeld2.jpeg" alt="A imagem não carregou"></button></a>
                     <a href="mensagem.html"><button type="submit"><img src="imagens/mensagens.jpg" alt=""></button></a>
-                    <a href="nos.html"><button type="submit"><img src="imagens/2p.png" alt=""></button></a>
                 </aside> 
             
             <div>
@@ -317,39 +316,7 @@
             }
         }
 
-        // Carregar posts do localStorage e renderizar
-        function loadUserPosts() {
-            const posts = JSON.parse(localStorage.getItem('userPosts') || '[]');
-            const main = document.querySelector('main');
-            posts.forEach((p, idx) => {
-                const container = document.createElement('div');
-                container.className = 'post-generated';
-                container.innerHTML = `
-                    <div class="usuario">
-                        <img src="${p.avatar}" alt="" style="border-radius: 50%; margin-left: 3%; margin-top: 5%;">
-                        <p style="margin-top: 10%; margin-left: 3%;">${p.user}</p>
-                    </div>
-                    <img src="${p.image}" alt="" style="margin-top: 5%; margin-left: 3.5%;">
-                    <div class="post-actions">
-                        <button class="like-button" onclick="toggleLike(this)">🤍</button>
-                        <img src="imagens/icone2.png" alt="" style="margin-top: 1%;">
-                        <img src="imagens/icone3.png" alt="">
-                    </div>
-                    <p style="margin-left: 3.5%;">
-                        <mark style="color: rgb(51, 46, 46); background-color: rgb(236, 233, 233);">${p.user}</mark>
-                        ${p.caption}
-                    </p>
-                    <div id="comentarios_user_${idx}" class="comentarios"></div>
-                    <input style="margin-left: 2.5%;" type="text" id="input_user_${idx}" placeholder="Adicione um comentário..." onkeydown="if(event.key==='Enter'){ adicionarComentario('input_user_${idx}','comentarios_user_${idx}'); }">
-                    <button type="button" onclick="adicionarComentario('input_user_${idx}','comentarios_user_${idx}')">enviar</button>
-                `;
-                main.appendChild(container);
-            });
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
-            loadUserPosts();
-            
             const storyLinks = document.querySelectorAll('.userstory a');
             
             storyLinks.forEach(link => {
@@ -371,47 +338,5 @@
                 }
             });
         });
-        
-        // Carregar posts do servidor (posts persistidos em posts.json pelo servidor)
-        async function appendServerPosts() {
-            try {
-                const res = await fetch('/posts');
-                if (!res.ok) return;
-                const posts = await res.json();
-                const main = document.querySelector('main');
-                posts.forEach((p, idx) => {
-                    const container = document.createElement('div');
-                    container.className = 'post-generated';
-                    container.innerHTML = `
-                        <div class="usuario">
-                            <img src="${p.avatar}" alt="" style="border-radius: 50%; margin-left: 3%; margin-top: 5%;"> 
-                            <p style="margin-top: 10%; margin-left: 3%;">${p.user}</p>
-                        </div>
-
-                        <img src="${p.imageUrl}" alt="" style="margin-top: 5%; margin-left: 3.5%;">
-
-                        <div class="post-actions">
-                            <button class="like-button" onclick="toggleLike(this)">🤍</button>
-                            <img src="imagens/icone2.png" alt="" style="margin-top: 1%;">
-                            <img src="imagens/icone3.png" alt="">
-                        </div>
-
-                        <p style="margin-left: 3.5%;">
-                            <mark style="color: rgb(51, 46, 46); background-color: rgb(236, 233, 233);">${p.user}</mark>
-                            ${p.caption}
-                        </p>
-
-                        <div id="comentarios_server_${idx}" class="comentarios"></div>
-                        <input style="margin-left: 2.5%;" type="text" id="input_server_${idx}" placeholder="Adicione um comentário..." onkeydown="if(event.key==='Enter'){ adicionarComentario('input_server_${idx}','comentarios_server_${idx}'); }">
-                        <button type="button" onclick="adicionarComentario('input_server_${idx}','comentarios_server_${idx}')">enviar</button>
-                    `;
-                    main.appendChild(container);
-                });
-            } catch (err) {
-                console.error('Falha ao buscar posts:', err);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', appendServerPosts);
     </script>
 </html>
